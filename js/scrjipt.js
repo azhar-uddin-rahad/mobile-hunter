@@ -17,7 +17,6 @@ const displayData=(phones)=>{
         error.classList.add('d-none');
     }
     phones.forEach(phone =>{
-        
         const div=document.createElement('div');
         div.classList.add('col');
         div.innerHTML =`
@@ -31,22 +30,26 @@ const displayData=(phones)=>{
       </div>
         `;
 
-        phoneContainer.appendChild(div);
-
-    
+        phoneContainer.appendChild(div); 
     })
+    spinner(false)
 }
 
 document.querySelector('#searchBtn').addEventListener('click',function(){
-    phoneContainer.innerHTML=''
+    spinner(true)
+ phoneContainer.innerHTML='';
  const inputField=document.querySelector('#inputField');
  const searchValue= inputField.value;
  loadPhone(searchValue);
 
-
-
 })
+const spinnerDiv=document.querySelector('#spinner')
+const spinner=isLoading=>{
+    if(isLoading){
+        spinnerDiv.classList.remove('d-none');
+    }
+    else{
+        spinnerDiv.classList.add('d-none');
+    }
+}
 
-
-
-loadPhone();
