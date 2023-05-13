@@ -7,8 +7,17 @@ const loadPhone=async(phoneName)=>{
 
 }
 const phoneContainer=document.querySelector('#phone-container');
-const displayData=(phones)=>{   
+const error=document.querySelector('#error')
+const displayData=(phones)=>{ 
+    phones=phones.slice(0,10);
+    if(phones.length == 0){
+        error.classList.remove('d-none');
+    }
+    else{
+        error.classList.add('d-none');
+    }
     phones.forEach(phone =>{
+        
         const div=document.createElement('div');
         div.classList.add('col');
         div.innerHTML =`
